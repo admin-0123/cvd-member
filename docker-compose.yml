@@ -1,4 +1,4 @@
-version: "3.5"
+version: "3.8"
 
 services:
   cvd-member-strapi:
@@ -49,6 +49,25 @@ services:
       - 5432:5432
     networks:
       - intern
+  
+  cvd-member-nuxt:
+    container_name: cvd-member-nuxt
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.Development
+    restart: always
+    environment:
+      - API_BASE_URL_WEB=${API_BASE_URL_WEB}
+      - BROWSER_BASE_URL=${BROWSER_BASE_URL}
+      - CHOKIDAR_USEPOLLING=true
+    ports:
+      - 3000:3000
+      - 24678:24678
+    volumes:
+      - ./frontend:/usr/src/nuxt-app
+      - 'frontend_node_modules:/usr/src/nuxt-app/node_modules'
+    depends_on:
+      - cvd-member-strapi
 
 networks:
   intern:
@@ -57,3 +76,5 @@ networks:
 
 volumes:
   cvd-member-database-volume:
+  frontend_node_modules:
+  # backend_node_modules:

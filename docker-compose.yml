@@ -61,7 +61,7 @@ services:
       - BROWSER_BASE_URL=${BROWSER_BASE_URL}
       - CHOKIDAR_USEPOLLING=true
     ports:
-      - 3000:3000
+      - 3001:3000
       - 24678:24678
     volumes:
       - ./frontend:/usr/src/nuxt-app

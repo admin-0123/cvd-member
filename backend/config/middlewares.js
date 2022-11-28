@@ -16,7 +16,7 @@ module.exports = [
           ],
         },
       },
-    }
+    },
   },
   'strapi::cors',
   'strapi::poweredBy',

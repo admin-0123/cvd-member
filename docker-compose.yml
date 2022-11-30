@@ -1,4 +1,4 @@
-version: "3.3"
+version: "3.8"
 
 services:
   cvd-member-strapi:
@@ -50,6 +50,18 @@ services:
     networks:
       - intern
   
+  cvd-member-redis:
+    container_name: cvd-member-redis
+    image: redis:latest
+    restart: always
+    ports:
+      - 6379:6379
+    command: redis-server --requirepass ${REDIS_PASS}
+    networks:
+      - intern
+    volumes:
+      - cvd-member-redis-volume:/var/lib/redis/data
+  
   cvd-member-nuxt:
     container_name: cvd-member-nuxt
     build:
@@ -61,7 +73,7 @@ services:
       - BROWSER_BASE_URL=${BROWSER_BASE_URL}
       - CHOKIDAR_USEPOLLING=true
     ports:
-      - 3001:3000
+      - 3000:3000
       - 24678:24678
     volumes:
       - ./frontend:/usr/src/nuxt-app

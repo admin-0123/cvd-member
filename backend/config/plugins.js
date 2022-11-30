@@ -6,9 +6,9 @@ module.exports = {
       connections: {
         default: {
           connection: {
-            host: "redis-12044.c283.us-east-1-4.ec2.cloud.redislabs.com",
-            port: 12044,
-            password: "MOGVrhA2PvjfqCUxBXHcdRMFgduxKvW7",
+            host: "localhost",
+            port: 6379,
+            password: "redis",
           },
           settings: {
             debug: false,

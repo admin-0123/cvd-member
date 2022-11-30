@@ -89,4 +89,5 @@ networks:
 volumes:
   cvd-member-database-volume:
   frontend_node_modules:
+  cvd-member-redis-volume:
   # backend_node_modules:
